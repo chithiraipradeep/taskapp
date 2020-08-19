@@ -1,0 +1,24 @@
+<ion-header>
+  <ion-toolbar color="secondary">
+    <ion-title style="text-align: center;">Home</ion-title>
+    <ion-buttons slot="end">
+      <ion-menu-button></ion-menu-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+<div class="searchNavigation">
+  <ion-searchbar placeholder="Search services" mode="ios" (ionInput)="search($event)" (ionCancel)="onCancel($event)"
+    [(ngModel)]="searchQuery" [debounce]="250" animated></ion-searchbar>
+</div>
+<ion-content>
+
+  <div class="salonList">
+    <div class="card" *ngFor="let item of category">
+      <div class="image_div" (click)="openSalon(item)" [style.backgroundImage]="'url(' +item.image+ ')'"></div>
+      <div class="desc_div" (click)="openSalon(item)">
+        <ion-label class="heading_lbl">{{item.name}}</ion-label>
+        <ion-label class="small_lbl"> {{item.description}}</ion-label>
+      </div>
+    </div>
+  </div>
+</ion-content>

@@ -1,0 +1,71 @@
+<ion-content>
+  <div class="mainContent">
+    <div class="salonThumb" [style.backgroundImage]="'url(' +category.image+ ')'">
+      <img src="assets/imgs/back.png" class="backBtn" (click)="back()" />
+      <!-- <img src="assets/share.png" class="shareBtn" /> -->
+       <img src="assets/imgs/export.png" class="shareBtn" />
+      <!-- <ion-icon name="share-outline" class="shareBtn"></ion-icon> -->
+      <div class="detailsSection">
+        <h2 class="title">{{category.name}}</h2>
+        <p class="subtitle">{{category.description}}</p>
+        <!-- <div class="ratting">
+          <ion-icon slot="start" [name]="ratting >=1 ? 'star' : 'star-outline'"
+            [color]="ratting >=1 ?'secondary':'light'" class="rattingIcon"></ion-icon>
+          <ion-icon slot="start" [name]="ratting >=2 ? 'star' : 'star-outline'"
+            [color]="ratting >=2 ?'secondary':'light'" class="rattingIcon"></ion-icon>
+          <ion-icon slot="start" [name]="ratting >=3 ? 'star' : 'star-outline'"
+            [color]="ratting >=3 ?'secondary':'light'" class="rattingIcon"></ion-icon>
+          <ion-icon slot="start" [name]="ratting >=4 ? 'star' : 'star-outline'"
+            [color]="ratting >=4 ?'secondary':'light'" class="rattingIcon"></ion-icon>
+          <ion-icon slot="start" [name]="ratting >=5 ? 'star' : 'star-outline'"
+            [color]="ratting >=5 ?'secondary':'light'" class="rattingIcon"></ion-icon>
+              (149 Reviews)
+        </div> -->
+      </div>
+
+
+    </div>
+    <div class="segments">
+      <ion-segment [(ngModel)]="feature" (ionChange)="segmentChanged($event)" mode="md" scrollable color="secondary">
+        <ion-segment-button mode="md" value="{{ item.id }}" *ngFor="let item of services">
+          <ion-label>{{item.name}}</ion-label>
+        </ion-segment-button>
+      </ion-segment>
+    </div>
+
+    <div class="serviceList" [ngSwitch]="feature">
+      <div class="card" *ngFor="let item of defects" >
+        <div class="image_div" [style.backgroundImage]="'url('+ item.image +')'"></div>
+        <div class="desc_div">
+          <ion-label class="heading_lbl">{{item.name}}</ion-label>
+          <ion-label class="small_pricing">starting at <span style="font-weight: 600;">₹ {{this.price}}</span></ion-label>
+          <ion-label class="small_pricing">{{item.description}}</ion-label>
+          <!-- <img *ngIf="selected.includes(item)" src="assets/imgs/correct.png" class="tick" alt=""> -->
+          <div class="item_info">
+            <h2 class="d-flex">
+              <span class="end add_remove_btn">
+                <!-- <small class="remove_icon" >-</small>
+                <strong class="ion-text-center">0</strong> -->
+                <small class="add_icon" (click)="addtocart(item)">+</small>
+              </span>
+              </h2>
+              </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</ion-content>
+<!-- <ion-footer>
+  <ion-button (click)="appoiment()" expand="block" color="secondary">
+    Make Appoinment
+  </ion-button>
+</ion-footer> -->
+
+<!-- <ion-footer>
+  
+  <ion-fab vertical="bottom" horizontal="end" slot="fixed" (click)="appoiment()" style="padding-right: 10px;">
+    <ion-fab-button color="secondary">
+      <ion-icon name="arrow-forward"></ion-icon>
+    </ion-fab-button>
+  </ion-fab>
+</ion-footer> -->
